@@ -25,7 +25,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "e2e": "start-server-and-test start http://localhost:3000 cypress-run",
-    "cypress-run":"cypress run"
+    "cypress-run": "cypress run"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +52,7 @@
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/react-test-renderer": "^18.0.0",
     "@types/webfontloader": "^1.6.35",
     "@types/webpack-env": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
@@ -69,6 +70,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
+    "react-test-renderer": "^18.2.0",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.4"

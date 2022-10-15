@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex h-screen bg-gray-600"
+>
+  <div
+    className="flex flex-row grow"
+  >
+    <div
+      className="m-auto basis-2/4"
+    >
+      <div>
+        Popup children
+      </div>
+    </div>
+  </div>
+</div>
+`;

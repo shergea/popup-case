@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="mt-4"
+>
+  <select
+    className="border border-gray-300 bg-gray-100 text-base block w-full p-2.5 font-medium outline-0"
+    id="firstName"
+    name="firstName"
+    onBlur={[Function]}
+    onChange={[Function]}
+  >
+    <option
+      value=""
+    >
+      First Name
+    </option>
+    <option
+      value="ABeeZee"
+    >
+      ABeeZee
+    </option>
+    <option
+      value="Abel"
+    >
+      Abel
+    </option>
+  </select>
+</div>
+`;
