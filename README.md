@@ -27,6 +27,9 @@ Builds the app for production to the `build` folder.
 
 ## What's Included
 General settings are saved to local storage with redux-persist.
+
 Fonts are cached for thirty seconds with redux-persist.
+
 If you submit the form successfully, the form values are saved to the local storage.
+
 You can change the popup's font family with the font selector.
