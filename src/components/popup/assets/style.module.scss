@@ -28,8 +28,12 @@
 .box {
   width: 720px;
   min-height: 543px;
-  padding: 86px 174px;
+  padding: 86px 100px;
   position: relative;
+}
+
+.form {
+  padding: 0 74px;
 }
 
 .headline {
@@ -41,6 +45,7 @@
 .description {
   font-size: 1.25rem;
   font-weight: 500;
+  padding: 0 74px;
 }
 
 .buttonGreen {

@@ -65,7 +65,7 @@ export default function Popup({ setting, fonts }: PopupProps) {
               }}
               validationSchema={PopupSchema}
             >
-              <Form>
+              <Form className={`w-full ${styles.form}`}>
                 <PopupInput
                   id="fullName"
                   name="fullName"
