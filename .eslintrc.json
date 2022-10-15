@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:import/typescript",
+        "plugin:prettier/recommended"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": ["off"],
+        "react/jsx-uses-react": ["off"],
+        "react/no-unescaped-entities": ["off"],
+        "no-param-reassign": [2, { "props": false }],
+        "react/jsx-props-no-spreading": "off"
+    },
+    "ignorePatterns": ["postcss.config.js","tailwind.config.js","declarations.d.ts"]
+}
