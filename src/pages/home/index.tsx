@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Popup from "../../components/popup";
 import PopupContainer from "../../components/popupContainer";
 import Sidebar from "../../components/sideBar";
@@ -6,10 +6,10 @@ import { useAppSelector, useAppDispatch } from "../../config/hooks";
 import Setting from "../../models/setting";
 import { fetchFonts, selectHome, setSetting } from "./homeSlice";
 
-function Home(): JSX.Element {
+export default function Home() {
   const home = useAppSelector(selectHome);
   const dispatch = useAppDispatch();
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchFonts());
   }, []);
 
@@ -21,7 +21,11 @@ function Home(): JSX.Element {
     <div>
       <div className="flex flex-row">
         <div className="basis-1/4">
-          <Sidebar onFormChange={onSettingFormChange} data={home.setting} />
+          <Sidebar
+            onFormChange={onSettingFormChange}
+            data={home.setting}
+            fonts={home.font.entities}
+          />
         </div>
         <div className="basis-3/4">
           <PopupContainer>
@@ -32,5 +36,3 @@ function Home(): JSX.Element {
     </div>
   );
 }
-
-export default Home;

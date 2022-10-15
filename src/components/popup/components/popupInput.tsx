@@ -1,24 +1,23 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
-import { Field, FieldProps } from "formik";
+import { Field, FieldProps, ErrorMessage } from "formik";
 
-type CustomInputProps = {
+type PopupInputProps = {
   id: string;
   name: string;
   placeholder: string;
   type: string;
 };
 
-export default function CustomInput({
+export default function PopupInput({
   id,
   name,
   placeholder,
   type,
-}: CustomInputProps) {
+}: PopupInputProps) {
   return (
-    <Field name={name}>
-      {({ field, meta }: FieldProps<any>) => (
-        <div className="mt-4">
+    <div className="mt-4">
+      <Field name={name}>
+        {({ field }: FieldProps<any>) => (
           <input
             id={id}
             type={type}
@@ -26,11 +25,13 @@ export default function CustomInput({
             placeholder={placeholder}
             className="border border-gray-300 bg-gray-100 text-base font-medium block w-full p-2.5 placeholder:text-black placeholder:text-base placeholder:font-medium outline-0"
           />
-          {meta.touched && meta.error && (
-            <div className="text-left text-red-500">{meta.error}</div>
-          )}
-        </div>
-      )}
-    </Field>
+        )}
+      </Field>
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-left text-red-500"
+      />
+    </div>
   );
 }

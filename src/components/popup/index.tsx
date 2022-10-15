@@ -5,9 +5,9 @@ import { FontItem } from "../../models/font";
 import Setting from "../../models/setting";
 import styles from "./assets/style.module.scss";
 import CloseButton from "./components/closeButton";
-import CustomButton from "./components/customButton";
-import CustomInput from "./components/customInput";
-import CustomSelect from "./components/customSelect";
+import GreenButton from "./components/greenButton";
+import PopupInput from "./components/popupInput";
+import PopupSelect from "./components/popupSelect";
 
 type PopupProps = {
   setting: Setting;
@@ -15,7 +15,7 @@ type PopupProps = {
 };
 
 export default function Popup({ setting, fonts }: PopupProps) {
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState<boolean | null>(false);
 
   const PopupSchema = Yup.object().shape({
     fullName: Yup.string().required("This field is required"),
@@ -25,40 +25,60 @@ export default function Popup({ setting, fonts }: PopupProps) {
     font: Yup.string().required("Required"),
   });
 
+  const onClose = () => {
+    setStatus(null);
+    setTimeout(() => {
+      setStatus(false);
+    }, 1000);
+  };
+
+  if (status === null) return <div />;
   return (
-    <div className={styles.boxBackground}>
+    <div
+      data-test="popup-1"
+      className={styles.boxBackground}
+      style={{ fontFamily: setting.font ? setting.font : "unset" }}
+    >
       <div
         className={`flex flex-col justify-center items-center bg-white text-center m-auto ${styles.box}`}
       >
-        {!status && (
+        {status === false && (
           <>
-            <CloseButton />
-            <h1 className={styles.headline}>{setting.headline}</h1>
-            <h2 className={styles.description}>{setting.description}</h2>
+            <CloseButton onClick={onClose} />
+            <h1 data-test="popup-headline" className={styles.headline}>
+              {setting.headline}
+            </h1>
+            <h2 data-test="popup-description" className={styles.description}>
+              {setting.description}
+            </h2>
 
             <Formik
-              initialValues={{}}
+              initialValues={{
+                fullName: "",
+                email: "",
+                font: "",
+              }}
               onSubmit={(values) => {
                 // eslint-disable-next-line no-console
-                console.log(values);
+                localStorage.setItem("data", JSON.stringify(values));
                 setStatus(true);
               }}
               validationSchema={PopupSchema}
             >
               <Form>
-                <CustomInput
+                <PopupInput
                   id="fullName"
                   name="fullName"
                   type="text"
                   placeholder="Your Name"
                 />
-                <CustomInput
+                <PopupInput
                   id="email"
                   name="email"
                   type="text"
                   placeholder="Email"
                 />
-                <CustomSelect
+                <PopupSelect
                   id="font"
                   name="font"
                   placeholder="Select Font"
@@ -68,7 +88,7 @@ export default function Popup({ setting, fonts }: PopupProps) {
                     key: index,
                   }))}
                 />
-                <CustomButton type="submit" text={setting.buttonText} />
+                <GreenButton type="submit" text={setting.buttonText} />
               </Form>
             </Formik>
           </>
@@ -79,7 +99,10 @@ export default function Popup({ setting, fonts }: PopupProps) {
               <span>&#10003;</span>
             </div>
             <div>
-              <span className={styles.successMessage}>
+              <span
+                data-test="popup-successMessage"
+                className={styles.successMessage}
+              >
                 {setting.successMessage}
               </span>
             </div>

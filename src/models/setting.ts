@@ -3,4 +3,5 @@ export default interface Setting {
   description: string;
   successMessage: string;
   buttonText: string;
+  font: string | null;
 }

@@ -33,8 +33,9 @@ const initialState: HomeReducerModel = {
   setting: {
     headline: "NEW STUFF",
     description: "Sign up for our newsletter and get 15% off your first order!",
-    successMessage: "",
+    successMessage: "Success",
     buttonText: "GET MY 30% OFF",
+    font: null,
   },
   font: {
     entities: [],

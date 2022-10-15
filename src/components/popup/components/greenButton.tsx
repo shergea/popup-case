@@ -3,15 +3,15 @@
 import React from "react";
 import styles from "../assets/style.module.scss";
 
-type CustomButtonProps = {
+type GreenButtonProps = {
   text: string;
   type?: "submit" | "reset" | "button";
 };
 
-export default function CustomButton({
+export default function GreenButton({
   text,
   type = "button",
-}: CustomButtonProps) {
+}: GreenButtonProps) {
   return (
     <button
       type={type}
